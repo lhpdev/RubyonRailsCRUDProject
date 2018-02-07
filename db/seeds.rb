@@ -17,7 +17,7 @@ introduction to seven platforms, whether you’re new to mobile or an
 experienced developer needing to expand your options. Plus, you’ll find
 out which cross-platform solution makes the most sense for your needs.
 </p>},
-image_url: 'https://static.pexels.com/photos/247932/pexels-photo-247932.jpeg',
+image_url: 'https://static.pexels.com/photos/247932/pexels-photo-247932.jpg',
 price: 26.00)
 Product.create!(title: 'Seven Mobile Apps in Seven Weeks 2',
 description:
@@ -29,7 +29,7 @@ introduction to seven platforms, whether you’re new to mobile or an
 experienced developer needing to expand your options. Plus, you’ll find
 out which cross-platform solution makes the most sense for your needs.
 </p>},
-image_url: 'https://static.pexels.com/photos/247932/pexels-photo-247932.jpeg',
+image_url: 'https://static.pexels.com/photos/247932/pexels-photo-247932.jpg',
 price: 26.00)
 Product.create!(title: 'Seven Mobile Apps in Seven Weeks 3',
 description:
