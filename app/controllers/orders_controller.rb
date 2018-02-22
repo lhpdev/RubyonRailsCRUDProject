@@ -34,6 +34,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        OrderMaler.received(@order).delivery_later
         format.html { redirect_to store_index_url, notice:
             'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
@@ -84,4 +85,20 @@ class OrdersController < ApplicationController
         redirect_to store_index_url, notice: 'Your cart is empty'
       end
     end
+
+    # START: pay_type_params
+
+    def pay_type_params
+      if order_params[:pay_type] == "Credit Card"
+        params.require(:order).permit(:credit_card_number, :expiration_date)
+      elsif order_params[:pay_type] == "Check"
+        params.require(:order).permit(:routing_number, :account_number)
+      elsif order_params[:pay_type] == "Purchase Order"
+        params.require(:order).permit(:po_number)
+      else
+        {}
+      end
+    end
+
+    # END: pay_type_params
 end
