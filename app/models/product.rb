@@ -1,4 +1,8 @@
+require 'active_model/serializers/xml'
+
 class Product < ApplicationRecord
+  include ActiveModel::Serializers::Xml
+
   has_many :line_items
   has_many :orders, through: :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
@@ -10,6 +14,10 @@ class Product < ApplicationRecord
     message: 'must be a URL for GIF, JPG or PNG image.'
   }
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
+
+  def self.find_products_for_sale
+    find(:all, :order => "title", :conditions => {:locale => "#{I18n.locale}"})
+  end
 
   private
     # ensure that there are no line items referencing this products

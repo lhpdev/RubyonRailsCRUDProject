@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: :new
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authorize, only: [:new, :create]
   # GET /orders
   # GET /orders.json
   def index
@@ -34,9 +34,9 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        OrderMaler.received(@order).delivery_later
-        format.html { redirect_to store_index_url, notice:
-            'Thank you for your order.' }
+        ChargeOrderJob.perform_later(@order, pay_type_params.to_h)
+        format.html { redirect_to store_index_url(locale: I18n.locale),
+           notice: I18n.t('.thanks') }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

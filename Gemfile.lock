@@ -29,6 +29,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.1.4)
       activesupport (= 5.1.4)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.1.4)
       activemodel (= 5.1.4)
       activesupport (= 5.1.4)
@@ -41,6 +45,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (10.0.0)
@@ -69,6 +74,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (0.9.3)
       concurrent-ruby (~> 1.0)
+    i18n-js (3.0.4)
+      i18n (~> 0.6, >= 0.6.6)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -183,9 +190,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemodel-serializers-xml
+  bcrypt (~> 3.1.7)
   byebug
   capybara
   coffee-rails (~> 4.2)
+  i18n-js
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
