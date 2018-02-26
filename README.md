@@ -1,9 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+In this repository you are going to find the first two parts from "Agile Web Developtmaent with Rails 5.1" book implemented.
 
-Things you may want to cover:
 
 * Ruby version
 
