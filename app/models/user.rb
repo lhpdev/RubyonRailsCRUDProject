@@ -13,4 +13,10 @@ class User < ApplicationRecord
         raise Error.new "Can't delete last user"
       end
     end
+
+    def anything
+      if User.count.zero?
+        ####
+      end
+    end
 end

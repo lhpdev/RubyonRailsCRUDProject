@@ -3,7 +3,7 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
 
-
+  fixtures :products #error here. 
 
   test "product attributes must not be empty" do
    product = Product.new
